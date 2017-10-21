@@ -1,0 +1,32 @@
+#!/usr/bin/env perl
+#PODNAME: Drug-Reaction
+use Modern::Perl;
+use Data::Dumper;
+use IO::All -utf8;
+use Cwd qw(abs_path);
+use FindBin qw($Bin);
+use Getopt::Long::Descriptive;
+use File::Basename qw(basename dirname);
+
+my ($opt, $usage) = describe_options(
+  'Drug Reaction Pipeline %o <some-arg>',
+  [ 'step|s=s',   "0: database initialize; 1: drug_analysis; 2: upload results to database", { required => 1 } ],
+  [],
+  [ 'genotype|g=s',   "genotype directory or file" ],
+  [ 'gender|d=s',   "sample genotype file" ],
+  [],
+  [ 'para|p=s',   "", { default => "$Bin/../para" } ],
+  [ 'db_url|u=s',   "drug reaction database url", { default => "postgres://postgres:123456\@192.168.1.205:5439/pharmgkb" } ],
+  [ 'outdir|o=s',   "output directory", { default => "drug-reaction_results" } ],
+  [],
+  [ 'verbose|v',  "print extra stuff"            ],
+  [ 'help',       "print usage message and exit", { shortcircuit => 1 } ],
+);
+print($usage->text), exit if $opt->help;
+
+#use lib "$Bin/../lib";
+use Drug::Reaction;
+
+my %parameters = %{$opt};
+my $object = Drug::Reaction->new( \%parameters );
+$object->drug_reaction_main( );
