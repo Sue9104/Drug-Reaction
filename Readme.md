@@ -4,7 +4,7 @@ Drug::Reaction - Drug Reaction Analysis in 9800
 
 # VERSION
 
-version 0.001
+version 1.001
 
 # SYNOPSIS
 
@@ -17,6 +17,10 @@ version 0.001
       outdir => "drug-reaction_results"
     );
     $instance->drug_reaction_main;
+    
+    or
+    
+    drug_reaction --help
 
 # ATTRIBUTES
 
@@ -31,7 +35,7 @@ gender csv file, formate as "sample\_id,gender", gender must be chinese
 
 ## para
 
-auxiliary directory, included essential files for analysization
+share directory, included essential files for analysization
 
 init db
 
@@ -62,10 +66,6 @@ drug-reaction database url, default is 'postgres://postgres:123456@192.168.1.205
 analysis output directory
 
 # METHODS
-
-## method
-
-method description
 
 ## init\_db
 

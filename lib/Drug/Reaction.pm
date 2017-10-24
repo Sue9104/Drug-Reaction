@@ -145,6 +145,10 @@ version 0.001
     outdir => "drug-reaction_results"
   );
   $instance->drug_reaction_main;
+  
+  or
+  
+  drug_reaction --help
 
 =head1 ATTRIBUTES
 
@@ -159,7 +163,7 @@ gender csv file, formate as "sample_id,gender", gender must be chinese
 
 =head2 para
 
-auxiliary directory, included essential files for analysization
+share directory, included essential files for analysization
 
 init db
 
@@ -210,10 +214,6 @@ drug-reaction database url, default is 'postgres://postgres:123456@192.168.1.205
 analysis output directory
 
 =head1 METHODS
-
-=head2 method
-
-method description
 
 =head2 init_db
 
